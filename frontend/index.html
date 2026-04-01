@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>VitalSync</title>
+</head>
+<body>
+  <h1>VitalSync - Suivi médical et sportif</h1>
+  <p id="status">Chargement...</p>
+  <script>
+    fetch("/api/health")
+      .then(r => r.json())
+      .then(d => {
+        document.getElementById("status")
+          .textContent = "API: " + d.status;
+      });
+  </script>
+</body>
+</html>
