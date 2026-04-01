@@ -3,7 +3,7 @@ const express = require("express");
 const app = express();
 app.get("/health", (req, res) =>
   res.json({ status: "ok" })
-)
+);
 
 test("GET /health returns 200", async () => {
   const res = await request(app).get("/health");
