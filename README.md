@@ -431,6 +431,22 @@ jobs:
 
 **Health check** : le script fait 15 tentatives (toutes les 3 s). Si aucune ne réussit, `exit 1` fait échouer la pipeline. En cas d'échec, les logs du conteneur sont affichés pour faciliter le diagnostic.
 
+**Screenshot – vue globale pipeline :**
+
+![Pipeline CI/CD](screenshots/partie3-cicd/ci_cd_pipeline.png)
+
+**Screenshot – Lint & Tests :**
+
+![Lint & Tests](screenshots/partie3-cicd/lint_and_test.png)
+
+**Screenshot – Build & Push :**
+
+![Build & Push](screenshots/partie3-cicd/build_and_push.png)
+
+**Screenshot – Deploy staging & Health check :**
+
+![Deploy staging](screenshots/partie3-cicd/deploy_and_staging.png)
+
 ---
 
 ### Exercice 7 – Secrets et déclencheurs
@@ -440,19 +456,21 @@ jobs:
 | Secret | Rôle |
 |---|---|
 | `GITHUB_TOKEN` | Automatique — authentification GHCR et push d'images |
+| `POSTGRES_USER` | Nom d'utilisateur PostgreSQL (staging) |
 | `POSTGRES_PASSWORD` | Mot de passe PostgreSQL (staging) |
+| `POSTGRES_DB` | Nom de la base de données (staging) |
 
 **Déclencheurs** :
 
 ```yaml
 on:
   push:
-    branches: [main, develop]   # Pipeline sur chaque push
+    branches: [main, dev]   # Pipeline sur chaque push
   pull_request:
-    branches: [main]            # Pipeline sur chaque PR vers main
+    branches: [main]        # Pipeline sur chaque PR vers main
 ```
 
-> La pipeline tourne sur `develop` pour détecter les bugs en cours de développement, et sur les PR vers `main` pour garantir que rien de cassé n'atteint la production.
+> La pipeline tourne sur `dev` pour détecter les bugs en cours de développement, et sur les PR vers `main` pour garantir que rien de cassé n'atteint la production.
 
 **Pourquoi ne jamais stocker de secrets en clair dans le CI ?**
 
