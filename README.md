@@ -619,7 +619,6 @@ stringData:
 
 ```bash
 # Cloner le dépôt
-git clone https://github.com/YOUR_USERNAME/vitalsync.git
 cd vitalsync
 
 # Configurer les variables d'environnement
