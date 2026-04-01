@@ -1,0 +1,14 @@
+# Dépendances locales : reconstruites dans l'image via npm install
+node_modules
+
+# Dockerfile et .dockerignore : ne font pas partie de l'application
+Dockerfile
+.dockerignore
+
+# Fichiers Git : historique et config inutiles dans le conteneur
+.git
+.gitignore
+
+# Variables d'environnement locales : ne jamais embarquer de secrets dans l'image
+.env
+*.env
